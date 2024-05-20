@@ -1,0 +1,38 @@
+:: DATE: converts to a date format by removing the time portion
+:: -> used for casting, which means converting a value from one data type to another
+
+example: 
+
+SELECT 
+    job_title_short as Title,
+    job_location as location, 
+    job_posted_date :: Date as Date,
+    extract(month from job_posted_date) as date_month
+from 
+    job_postings_fact
+LIMIT 5;
+
+AL TIME ZONE: Converts a timestamp to a specific time zone
+
+Exmaple: changing from UTC to EST
+SELECT 
+    job_title_short as Title,
+    job_location as location, 
+    job_posted_date at time zone 'UTC' at time zone 'EST' as Date,
+
+from 
+    job_postings_fact
+LIMIT 5;
+
+EXTRACT: Gets specific date parts (e.g. year, month, day)
+
+Exmaple: 
+
+SELECT 
+    job_title_short as Title,
+    job_location as location, 
+    job_posted_date at time zone 'UTC' at time zone 'EST' as Date,
+    extract(month from job_posted_date) as date_month
+from 
+    job_postings_fact
+LIMIT 5;
