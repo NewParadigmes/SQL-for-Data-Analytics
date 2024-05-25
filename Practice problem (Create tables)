@@ -1,0 +1,28 @@
+
+Practice problem, 
+
+Create tables that include jobs from Jan, Feb, and March. 
+
+-- January
+
+CREATE table January_jobs as  
+SELECT *
+from 
+    job_postings_fact
+WHERE extract(month from job_posted_date) = 1;
+
+-- February
+
+CREATE table February_jobs as  
+SELECT *
+from 
+    job_postings_fact
+WHERE extract(month from job_posted_date) = 2;
+
+-- March
+
+CREATE table March_jobs as  
+SELECT *
+from 
+    job_postings_fact
+WHERE extract(month from job_posted_date) = 3;
