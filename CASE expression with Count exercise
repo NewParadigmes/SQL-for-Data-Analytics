@@ -1,0 +1,28 @@
+A CASE expression in SQL is the way to apply conditional logic within SQL queries 
+
+CASE - begins the expression, 
+WHEN - specifies the condition to look at, 
+THEN - what to do when the condition is TRUE
+ELSE (optional) - provides the output if none of the WHEN are met
+END - concludes the CASE expression 
+
+Example: 
+/* create a new column where 
+- 'Anywhere' jobs are remote
+- 'New York, NY' jobs as 'Local'
+- otherwise 'onsite'
+*/
+
+SELECT 
+count(job_id) as number_of_jobs,
+Case 
+    when job_location = 'Anywhere' then 'Remote'
+    when job_location = 'New York, NY' then 'Local'
+    else 'Onsite'
+end as location_category
+    from job_postings_fact
+    where job_title_short = 'Data Analyst'
+    GROUP BY
+    location_category;
+
+
